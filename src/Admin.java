@@ -30,7 +30,7 @@ public class Admin {
             // połączenie kanału
             channel.connect(new InetSocketAddress(server, port));
 
-            System.out.print("Klient: łączę się z serwerem ...");
+            System.out.print("Admin: łączę się z serwerem ...");
 
             while (!channel.finishConnect()) {
                 // ew. pokazywanie czasu łączenia (np. pasek postępu)
@@ -45,7 +45,7 @@ public class Admin {
             // ...
         }
 
-        System.out.println("\nKlient: jestem połączony z serwerem ...");
+        System.out.println("\nAdmin: jestem połączony z serwerem ...");
 
         Charset charset  = Charset.forName("ISO-8859-2");
         Scanner scanner = new Scanner(System.in);
@@ -63,7 +63,7 @@ public class Admin {
         while (true) {
 
             if(request.topic != null && request.news != null) {
-                System.out.println("Klient: wysyłam - " + request.topic);
+                System.out.println("Admin: wysyłam - " + request.topic);
                 // "Powitanie" do serwera
                 channel.write(charset.encode("ADMIN " + request.topic + ";" + request.news + '\n'));
                 request.topic = null;
@@ -104,7 +104,7 @@ public class Admin {
 
                 String odSerwera = cbuf.toString();
 
-                System.out.println("Klient: serwer właśnie odpisał ... " + odSerwera);
+                System.out.println("Admin: serwer właśnie odpisał ... " + odSerwera);
                 ClientWindow.news.setValue(odSerwera);
                 cbuf.clear();
 
@@ -121,6 +121,5 @@ public class Admin {
         }
 
         scanner.close();
-
     }
 }
