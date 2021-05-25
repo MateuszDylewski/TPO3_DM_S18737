@@ -8,13 +8,11 @@ import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 
 public class Server {
-
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException{
         new Server();
     }
 
@@ -89,7 +87,7 @@ public class Server {
                     SocketChannel cc = (SocketChannel) key.channel();
 
                     // obsługa zleceń klienta
-                    serviceRequest(cc);
+                    serviceRequest(cc, key);
 
                     continue;
                 }
@@ -120,8 +118,10 @@ public class Server {
     // Tu będzie zlecenie do pezetworzenia
     private StringBuffer reqString = new StringBuffer();
 
+    private Map<SelectionKey, List<Topics>> clientTopics = new HashMap();
 
-    private void serviceRequest(SocketChannel sc) {
+
+    private void serviceRequest(SocketChannel sc, SelectionKey key) {
         if (!sc.isOpen()) return; // jeżeli kanał zamknięty
 
         System.out.print("Serwer: czytam komunikat od klienta ... ");
@@ -151,7 +151,47 @@ public class Server {
             String cmd = reqString.toString();
             System.out.println(reqString);
 
-            if (cmd.equals("Hi")) {
+            List<Topics> tmp = null;
+            if(cmd.startsWith("SUB")) {
+                cmd = cmd.substring(4);
+
+                if (clientTopics.containsKey(key)) {
+                    tmp = clientTopics.get(key);
+
+                } else {
+                    tmp = new ArrayList();
+                    clientTopics.put(key, tmp);
+                }
+                if(!tmp.contains(Topics.valueOf(cmd))) {
+                    tmp.add(Topics.valueOf(cmd));
+                }
+
+            } else if(cmd.startsWith("UNSUB")){
+                cmd = cmd.substring(6);
+                tmp = clientTopics.get(key);
+
+                if(tmp.contains(Topics.valueOf(cmd))) {
+                    clientTopics.get(key).remove(Topics.valueOf(cmd));
+                }
+            } else if(cmd.startsWith("ADMIN")){
+                cmd = cmd.substring(6);
+                String[] request = cmd.split(";");
+                clientTopics.forEach((k,v) -> {
+                    if(v.contains(Topics.valueOf(request[0]))){
+                        SocketChannel outPutSc = (SocketChannel) k.channel();
+                        try {
+                            System.out.println("Serwer: wysylam wiadomosc do klienta ..." + request[1]);
+                            outPutSc.write(charset.encode(CharBuffer.wrap(request[1])));
+                        } catch (Exception exception){
+                            System.out.println("Cannot send the news.");
+                        }
+                    }
+                });
+            }
+            System.out.println(clientTopics.toString());
+
+
+            /*if (cmd.equals("Hi")) {
                 sc.write(charset.encode(CharBuffer.wrap("Hi")));
             }
             else if (cmd.equals("Bye")) {           // koniec komunikacji
@@ -162,10 +202,11 @@ public class Server {
                 sc.close();                      // - zamknięcie kanału
                 sc.socket().close();			 // i gniazda
 
-            } else
+            } else {
                 // echo do Klienta
+                System.out.println(clientTopics.toString());
                 sc.write(charset.encode(CharBuffer.wrap(reqString)));
-
+            }*/
 
         } catch (Exception exc) { // przerwane polączenie?
             exc.printStackTrace();

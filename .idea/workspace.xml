@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38cbba6f-07b2-4e92-8cc8-43df08a3e629" name="Default Changelist" comment="" />
+    <list default="true" id="38cbba6f-07b2-4e92-8cc8-43df08a3e629" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/ClientWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/ClientWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/META-INF/TPO3_DM_S18737.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TPO3_DM_S18737/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,27 +22,50 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1sg1f73AYFYr7OBTMvJTdTCpK7p" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TPO1_DM_S18737" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TPO2_DM_S18737/src/zad1/Client.java" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
+    <configuration name="Admin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Admin" />
+      <module name="TPO3_DM_S18737" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="TPO3_DM_S18737" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8 (2)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="TPO3_DM_S18737" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -43,13 +78,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Admin" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Admin" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -62,44 +117,24 @@
       <updated>1621279519268</updated>
       <workItem from="1621279522381" duration="4914000" />
       <workItem from="1621358014087" duration="29000" />
+      <workItem from="1621361432424" duration="111000" />
+      <workItem from="1621361555232" duration="72000" />
+      <workItem from="1621361643033" duration="3833000" />
+      <workItem from="1621714210808" duration="212000" />
+      <workItem from="1621714493770" duration="689000" />
+      <workItem from="1621715257929" duration="595000" />
+      <workItem from="1621716116370" duration="258000" />
+      <workItem from="1621716687383" duration="603000" />
+      <workItem from="1621717308098" duration="894000" />
+      <workItem from="1621718226092" duration="428000" />
+      <workItem from="1621718673282" duration="506000" />
+      <workItem from="1621801693874" duration="4056000" />
+      <workItem from="1621869941335" duration="22000" />
+      <workItem from="1621973491424" duration="7034000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser" timestamp="1621279746525">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621279746525" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1621358041901">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621358041901" />
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1621357839928">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621357839928" />
-    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1621357839928">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621357839928" />
-    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1621357839928">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621357839928" />
-    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1621357839928">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621357839928" />
-    <state x="453" y="175" key="SettingsEditor" timestamp="1621280937039">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="453" y="175" key="SettingsEditor/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621280937039" />
-    <state x="1920" y="66" width="1532" height="925" key="dock-window-1" timestamp="1621358043243">
-      <screen x="1920" y="62" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="66" width="1532" height="925" key="dock-window-1/0.0.1920.1040/1920.62.1920.1040@0.0.1920.1040" timestamp="1621358043243" />
+    <option name="version" value="3" />
   </component>
 </project>

@@ -1,6 +1,3 @@
-import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
@@ -10,15 +7,14 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 import java.util.Scanner;
 
-public class Client {
-
-    public static Topics topicRequest;
+public class Admin {
 
     public static void main(String[] args) throws IOException {
         Request request = new Request();
-        ClientWindow clientWindow = new ClientWindow();
-        Thread clientWindowThread = new Thread(() -> clientWindow.startWindow(request));
-        clientWindowThread.start();
+
+        AdminWindow adminWindow = new AdminWindow();
+        Thread adminWindowThread = new Thread(() -> adminWindow.startWindow(request));
+        adminWindowThread.start();
 
         SocketChannel channel = null;
         String server = "localhost"; // adres hosta serwera
@@ -66,11 +62,12 @@ public class Client {
         // pętla czytania
         while (true) {
 
-            if(request.topic != null) {
+            if(request.topic != null && request.news != null) {
                 System.out.println("Klient: wysyłam - " + request.topic);
                 // "Powitanie" do serwera
-                channel.write(charset.encode(request.topic.toString() + '\n'));
+                channel.write(charset.encode("ADMIN " + request.topic + ";" + request.news + '\n'));
                 request.topic = null;
+                request.news = null;
             }
 
             //cbuf = CharBuffer.wrap("cos" + "\n");
@@ -108,13 +105,7 @@ public class Client {
                 String odSerwera = cbuf.toString();
 
                 System.out.println("Klient: serwer właśnie odpisał ... " + odSerwera);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        ClientWindow.news.setValue(odSerwera);
-                    }
-                });
-
+                ClientWindow.news.setValue(odSerwera);
                 cbuf.clear();
 
                 if (odSerwera.equals("Bye")) break;
@@ -128,6 +119,8 @@ public class Client {
 
             System.out.println("Klient: piszę " + input);*/
         }
+
         scanner.close();
+
     }
 }

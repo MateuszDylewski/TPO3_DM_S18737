@@ -1,20 +1,21 @@
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class ClientWindow extends Application {
 
-    Client client;
+    public static Request request;
+    public static StringProperty news;
 
-    public void startWindow(Client client){
-
-        this.client = client;
+    public void startWindow(Request request ){
+        ClientWindow.request = request;
+        news = new SimpleStringProperty("");
+        Platform.setImplicitExit(false);
         Application.launch();
     }
 
@@ -22,55 +23,48 @@ public class ClientWindow extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Pane pane = new Pane();
-        ComboBox<Topics> topics = new ComboBox<>();
-        Label NewsLabel = new Label();
+        ComboBox<Topics> topicsComboBox = new ComboBox<>();
+        Label newsLabel = new Label();
         Label topicLabel = new Label("Tematy");
-        Label subscribedTopicsLabel = new Label("Zasubskrybowane");
         Button subscribeButton = new Button("SUBSCRIBE");
         Button unsubscribeButton = new Button("UNSUBSCRIBE");
-        ListView<Topics> subscribedTopicsListView = new ListView<>(FXCollections.observableArrayList(Topics.values()));
 
-        NewsLabel.setText("Temat: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non urna vitae massa consequat maximus.");
-        NewsLabel.setWrapText(true);
-        NewsLabel.setMaxWidth(190);
-        NewsLabel.setLayoutX(250);
-        NewsLabel.setLayoutY(20);
+        newsLabel.setText("Brak nowy wiadomosci.");
+        newsLabel.setWrapText(true);
+        newsLabel.setMaxWidth(225);
+        newsLabel.setLayoutX(200);
+        newsLabel.setLayoutY(20);
+        newsLabel.textProperty().bind(news);
 
-        subscribedTopicsLabel.setLayoutX(130);
-        subscribedTopicsLabel.setLayoutY(20);
-
-        subscribedTopicsListView.setLayoutX(130);
-        subscribedTopicsListView.setLayoutY(40);
-        subscribedTopicsListView.setMouseTransparent(true);
-        subscribedTopicsListView.setFocusTraversable(false);
-        subscribedTopicsListView.setMaxSize(100, 95);
-
-        topicLabel.setLayoutX(10);
+        topicLabel.setLayoutX(25);
         topicLabel.setLayoutY(20);
 
-        topics.getItems().setAll(Topics.values());
-        topics.setLayoutX(10);
-        topics.setLayoutY(40);
+        topicsComboBox.getItems().setAll(Topics.values());
+        topicsComboBox.setLayoutX(25);
+        topicsComboBox.setLayoutY(40);
 
         subscribeButton.setPrefSize(100,20);
-        subscribeButton.setLayoutX(10);
+        subscribeButton.setLayoutX(25);
         subscribeButton.setLayoutY(90);
         unsubscribeButton.setPrefSize(100,20);
-        unsubscribeButton.setLayoutX(10);
+        unsubscribeButton.setLayoutX(25);
         unsubscribeButton.setLayoutY(120);
 
-        pane.getChildren().addAll(topicLabel, subscribeButton, unsubscribeButton, topics, subscribedTopicsLabel, subscribedTopicsListView, NewsLabel);
+        pane.getChildren().addAll(topicLabel, subscribeButton, unsubscribeButton, topicsComboBox, newsLabel);
         Scene scene = new Scene(pane, 450, 200);
+        primaryStage.setTitle("Client");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
 
         subscribeButton.setOnAction(event -> {
 
+            request.topic = "SUB " + topicsComboBox.getValue();
         });
 
         unsubscribeButton.setOnAction(event -> {
 
+            request.topic = "UNSUB " + topicsComboBox.getValue();
         });
     }
 }
